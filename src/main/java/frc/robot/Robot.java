@@ -25,9 +25,11 @@ public class Robot extends TimedRobot {
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
 
-
+  //sets up controller variables
   public static XboxController driver;
   public static XboxController operator;
+
+  //sets up motor variables
   public static TalonMotor motor;
 
   /**
@@ -93,11 +95,12 @@ public class Robot extends TimedRobot {
      CommandScheduler.getInstance().run();
 
      while (driver.getAButtonPressed()) {
-       //Lowest functional value is 0.055
-       motor.motorOn(-0.055);
+      //Lowest functional value is 0.055
+      motor.motorOn(-0.055);
      }
-     //sets power to 0
+
      while (driver.getAButtonReleased()) {
+      //sets power to 0
       motor.motorOn(0);
     }
     
