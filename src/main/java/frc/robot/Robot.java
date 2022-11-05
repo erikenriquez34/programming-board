@@ -10,7 +10,9 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.Subsystem.NeoMotor;
 import frc.robot.Subsystem.TalonMotor;
+
 
 
 /**
@@ -25,12 +27,13 @@ public class Robot extends TimedRobot {
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
 
 
-  //sets up controller variables
+  // sets up controller variables
   public static XboxController driver;
   public static XboxController operator;
 
-  //sets up motor variables
-  public static TalonMotor motor;
+  // sets up motor variables
+  public static TalonMotor talon;
+  public static NeoMotor neo;
 
   /**
    * This function is run when the robot is first started up and should be used for any
@@ -42,11 +45,9 @@ public class Robot extends TimedRobot {
     m_chooser.addOption("My Auto", kCustomAuto);
     SmartDashboard.putData("Auto choices", m_chooser);
 
+    //controller references
     driver = new XboxController(0);
     operator = new XboxController(1);
-
-    motor = new TalonMotor();
-
   }
 
   /**
@@ -96,15 +97,23 @@ public class Robot extends TimedRobot {
 
      while (driver.getAButtonPressed()) {
       //Lowest functional value is 0.055
-      motor.motorOn(-0.055);
+      talon.motorOn(-0.055);
      }
 
      while (driver.getAButtonReleased()) {
       //sets power to 0
-      motor.motorOn(0);
+      talon.motorOn(0);
     }
-    
+
+     while (driver.getBButtonPressed()) {
+      //Lowest functional value is 0.055
+     }
+
+     while (driver.getBButtonReleased()) {
+      //sets power to 0
+    }
   }
+  
   
   @Override
   public void disabledInit() {}

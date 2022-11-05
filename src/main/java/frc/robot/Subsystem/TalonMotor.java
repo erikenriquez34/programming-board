@@ -14,12 +14,13 @@ public class TalonMotor extends SubsystemBase {
   /** Creates a new Motor. */
   public TalonFX motor;
   
+  // motor configuration
   public TalonMotor() {
-    // motors
     this.motor = new TalonFX(1);
     this.motor.setNeutralMode(NeutralMode.Brake);
   }
 
+  // motor power
   public void motorPower(Double power) {
     this.motor.set(ControlMode.PercentOutput, power);
   }

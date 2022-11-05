@@ -4,27 +4,37 @@
 
 package frc.robot.Subsystem;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.NeutralMode;
-
+//REV libraries
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
-public CANSparkMax motor;
+//Subsystem base?? I guess it needs this
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+public class NeoMotor extends SubsystemBase {
 
-// the big spark is 4 and small is 3 same programming
-public class NeoMotor {
+private CANSparkMax motor;
+
+// the big spark is 4
+// the small spark is 3
+public NeoMotor() {
+    //motor configuration
     this.motor = new CANSparkMax(4, MotorType.kBrushless);
 }
 
-public void setMotorPower(double power, double motorPower) {
-    this.motor.set(motorPower);
-}
-
-public void NeoMotorPower(double motorPower) {
-    setMotorPower(motorPower, motorPower);
-}
-
-public void motorOn(double power) {
+public void motorPower(double power) {
     this.motor.set(power);
+}
+
+    // public void setMotorPower(double power, double motorPower) {
+    //     this.motor.set(motorPower);
+    // }
+
+    // //small big is 3 same programming
+    // public void NeoMotor(double motorPower) {
+    //     setMotorPower(motorPower, motorPower);
+    // }
+
+    // public void motorOn(double power) {
+    //     this.motor.set(power);
+    // }
 }
